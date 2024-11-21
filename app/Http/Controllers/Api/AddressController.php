@@ -41,12 +41,12 @@ class AddressController extends Controller
             return response()->json([
                 'status' => 'success',
                 'message' => 'address saved'
-            ]);
+            ], 201);
         } else {
             return response()->json([
                 'status' => 'error',
                 'message' => 'address failed to save'
-            ]);
+            ], 400);
         }
     }
 
