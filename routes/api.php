@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AddressController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ProductController;
@@ -29,3 +30,6 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanc
 // Category
 Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('/products', [ProductController::class, 'index']);
+
+// Address
+Route::apiResource('addresses', AddressController::class)->middleware('auth:sanctum');
