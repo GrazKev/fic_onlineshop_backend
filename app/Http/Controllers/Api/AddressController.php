@@ -25,7 +25,29 @@ class AddressController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $address = DB::table('addresses')->insert([
+            'name' => $request->name,
+            'full_address' => $request->full_address,
+            'phone' => $request->phone,
+            'prov_id' => $request->prov_id,
+            'city_id' => $request->city_id,
+            'district_id' => $request->district_id,
+            'postal_code' => $request->postal_code,
+            'user_id' => $request->user()->id,
+            'is_default' => $request->is_default,
+        ]);
+
+        if ($address) {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'address saved'
+            ]);
+        } else {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'address failed to save'
+            ]);
+        }
     }
 
     /**
